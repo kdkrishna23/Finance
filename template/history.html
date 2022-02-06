@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+    <table class = "table table-stripped">
+        <thead class = "thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transactions in history %}
+                <tr>
+                    <td>{{ transactions["name"].upper() }}</td>
+                    <td>{{ "-" if transactions["type"] == 'sell' else "" }}{{ transactions["shares"] }}</td>
+                    <td>{{ transactions["price"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
